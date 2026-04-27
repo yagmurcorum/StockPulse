@@ -571,6 +571,12 @@ Swagger UI can be used to test all endpoints.
 
 ---
 
+## HTTP Request Samples
+
+The project also includes a `StockPulse.Api.http` file with sample requests for testing the API directly from Visual Studio.
+
+---
+
 ## Suggested Test Flow
 
 After starting the application, test the API in Swagger in this order:
