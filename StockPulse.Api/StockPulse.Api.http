@@ -1,6 +1,37 @@
-@StockPulse.Api_HostAddress = http://localhost:5143
+@StockPulse.Api_HostAddress = https://localhost:7174
 
-GET {{StockPulse.Api_HostAddress}}/weatherforecast/
+### Get all tracked stocks
+GET {{StockPulse.Api_HostAddress}}/api/Stocks
 Accept: application/json
 
-###
+### Track Apple stock
+POST {{StockPulse.Api_HostAddress}}/api/Stocks/track/AAPL
+Accept: application/json
+
+### Track Microsoft stock
+POST {{StockPulse.Api_HostAddress}}/api/Stocks/track/MSFT
+Accept: application/json
+
+### Track Tesla stock
+POST {{StockPulse.Api_HostAddress}}/api/Stocks/track/TSLA
+Accept: application/json
+
+### Track Nvidia stock
+POST {{StockPulse.Api_HostAddress}}/api/Stocks/track/NVDA
+Accept: application/json
+
+### Get a tracked stock by symbol
+GET {{StockPulse.Api_HostAddress}}/api/Stocks/AAPL
+Accept: application/json
+
+### Refresh a tracked stock
+POST {{StockPulse.Api_HostAddress}}/api/Stocks/AAPL/refresh
+Accept: application/json
+
+### Get top movers
+GET {{StockPulse.Api_HostAddress}}/api/Analytics/top-movers?limit=5
+Accept: application/json
+
+### Delete a tracked stock
+DELETE {{StockPulse.Api_HostAddress}}/api/Stocks/AAPL
+Accept: application/json
