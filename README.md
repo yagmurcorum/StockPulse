@@ -660,6 +660,13 @@ The goal was to keep the project small, clean, and working while fully covering 
 
 A frontend could be added later using React, Angular, Blazor, or MVC, but it was not necessary for the core backend assessment.
 
+### Known Limitations
+
+- The application stores quote snapshots locally, but it does not implement user accounts or authentication.
+- Company name and exchange fields are currently simplified because the project focuses on quote tracking and backend structure.
+- The project uses a small set of stock symbols for testing, but any valid Finnhub-supported stock symbol can be tracked.
+- The SQLite database file is created locally and is intentionally not committed to the repository.
+
 ---
 
 ## Current Status
