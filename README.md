@@ -32,7 +32,7 @@ The scope is intentionally small and backend-oriented. The priority was to deliv
 | External financial API integration | Finnhub quote API integration                                                               |
 | Local database persistence         | SQLite with Entity Framework Core                                                           |
 | At least one core entity           | `Stock` and `PriceSnapshot` entities                                                        |
-| RESTful API endpoints              | `StocksController` endpoints for tracking, retrieving, refreshing, and deleting stocks      |
+| RESTful API endpoints              | `StocksController`, `AnalyticsController`, and `HealthController` endpoints      |
 | Analytical / aggregation use case  | `GET /api/Analytics/top-movers`                                                             |
 | OOP principles                     | Models, DTOs, interfaces, services, repositories, dependency injection                      |
 | Design pattern                     | Repository Pattern and Strategy Pattern                                                     |
@@ -55,6 +55,7 @@ The scope is intentionally small and backend-oriented. The priority was to deliv
 - **Finnhub API**
 - **Swagger / OpenAPI**
 - **User Secrets for local API key management**
+- **EditorConfig for consistent formatting**
 
 ---
 
@@ -171,13 +172,14 @@ StockPulse
 ├── StockPulse.sln
 ├── README.md
 ├── .gitignore
+├── .editorconfig
 │
 └── StockPulse.Api
     │
     ├── Controllers
     │   ├── StocksController.cs
-    │   └── AnalyticsController.cs
-    │
+    │   ├── AnalyticsController.cs
+    │   └── HealthController.cs
     ├── Data
     │   └── AppDbContext.cs
     │
@@ -437,7 +439,29 @@ Example response:
   }
 ]
 ```
+---
 
+### Health
+
+#### Check API status
+
+```http
+GET /api/Health
+```
+
+Returns a simple status response that can be used to verify that the API is running.
+
+Example response:
+
+```json
+
+{
+  "status": "Healthy",
+  "application": "StockPulse.Api",
+  "timestampUtc": "2026-04-28T12:00:00Z"
+}
+
+```
 ---
 
 ## Error Handling
@@ -511,7 +535,7 @@ Before running the project, make sure the following tools and resources are avai
 - A free Finnhub API key
 - Internet connection for fetching quote data from Finnhub
 
-----
+---
 ## Setup and Run Instructions
 
 ### 1. Clone the repository
@@ -583,7 +607,7 @@ Swagger UI can be used to test all endpoints.
 
 ## HTTP Request Samples
 
-The project also includes a `StockPulse.Api.http` file with sample requests for testing the API directly from Visual Studio.
+The project also includes a `StockPulse.Api.http` file with sample requests for testing the API directly from Visual Studio, including stock tracking, analytics, and health check requests.
 
 ---
 
@@ -600,6 +624,7 @@ GET  /api/Stocks
 GET  /api/Stocks/AAPL
 POST /api/Stocks/AAPL/refresh
 GET  /api/Analytics/top-movers?limit=5
+GET  /api/Health
 ```
 
 Expected behavior:
@@ -609,6 +634,7 @@ Expected behavior:
 - `GET /api/Stocks/{symbol}` returns a specific tracked stock.
 - `refresh` adds a new price snapshot for an existing stock.
 - `top-movers` returns the latest tracked stocks ordered by percentage change.
+- `GET /api/Health` returns a simple API status response.
 
 ---
 
@@ -684,6 +710,8 @@ Implemented:
 - Swagger / OpenAPI
 - User Secrets for API key management
 - Layered project structure
+- Health endpoint for basic API status checks
+- EditorConfig for consistent formatting
 
 ---
 
