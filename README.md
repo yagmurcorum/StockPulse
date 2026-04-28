@@ -501,7 +501,17 @@ dotnet user-secrets set "Finnhub:ApiKey" "YOUR_FINNHUB_API_KEY" --project StockP
 ```
 
 ---
+## Prerequisites
 
+Before running the project, make sure the following tools and resources are available:
+
+- .NET 8 SDK
+- Visual Studio 2022 or another compatible IDE
+- Entity Framework Core tools for applying migrations
+- A free Finnhub API key
+- Internet connection for fetching quote data from Finnhub
+
+----
 ## Setup and Run Instructions
 
 ### 1. Clone the repository
